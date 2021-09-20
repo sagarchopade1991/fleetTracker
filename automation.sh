@@ -19,29 +19,30 @@ chmod +x /usr/local/bin/docker-compose
 
 # installing azure cli
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login --service-principal -u <APP-ID> -p <PASSWORD> --tenant <TENANT-ID>
+#az login --service-principal -u <APP-ID> -p <PASSWORD> --tenant <TENANT-ID>
+az login
 
 # add extention to az
 az extension add --name azure-iot
 
 # container registry login 
-az acr login --name <AZURE-CONTAINER-REGISTRY>
+az acr login --name tegfleettrackeracr
 
-# create iot device 
-az iot hub device-identity create -n tediothub -d tediotdevice --ee false
-az iot hub device-identity create -n tediothub -d tediotedgedevice --ee true
+# create iot device
+# az iot hub device-identity create -n tediothub -d tediotdevice --ee false
+# az iot hub device-identity create -n tediothub -d tediotedgedevice --ee true
 
 # create .env and copy content from env.temp
-true > .env && cp env.temp .env
-true > config.yaml && cp config.template.yaml config.yaml
-true > deployment.json && cp deployment.template.json deployment.json
+#true > .env && cp env.temp .env
+#true > config.yaml && cp config.template.yaml config.yaml
+#true > deployment.json && cp deployment.template.json deployment.json
 
 # install nodejs
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-apt-get install -y nodejs build-essential sshpass
+#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+#apt-get install -y nodejs build-essential sshpass
 
 # install npm packages and run nodejs app to set environment variables
-npm install && node set_env.js <RESOURCE-GROUP> tedblobstorage tediothub tediotdevice tedcosmosaccount tedLinuxVM tediotedgedevice <AZURE-CONTAINER-REGISTRY>
+#npm install && node set_env.js <RESOURCE-GROUP> tedblobstorage tediothub tediotdevice tedcosmosaccount tedLinuxVM tediotedgedevice <AZURE-CONTAINER-REGISTRY>
 # npm install && node set_env.js $resource_group $storage_acc $iot_hub $iot_device_name $cosmos_acc $vm_name
 
 docker-compose up -d
@@ -49,10 +50,10 @@ docker-compose up -d
 # Host name of the Nvidia Device : <NVIDIA-HOST-NAME> (Format : root@<public-ip-address>)
 # Port on which SSH in enabled on Nvidia device : <SSH-PORT> (Default port : 22)
 # Nvidia device root user password : <NVIDIA-PASSWORD> 
-sshpass -p <NVIDIA-PASSWORD> ssh -o 'StrictHostKeyChecking no' <NVIDIA-HOST-NAME> -p <SSH-PORT> 'exit'
-sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; rm /etc/iotedge/config.yaml' < <(cat)
-sshpass -p <NVIDIA-PASSWORD> scp -P <SSH-PORT> config.yaml <NVIDIA-HOST-NAME>:/etc/iotedge
-sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; systemctl restart iotedge' < <(cat)
+#sshpass -p <NVIDIA-PASSWORD> ssh -o 'StrictHostKeyChecking no' <NVIDIA-HOST-NAME> -p <SSH-PORT> 'exit'
+#sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; rm /etc/iotedge/config.yaml' < <(cat)
+#sshpass -p <NVIDIA-PASSWORD> scp -P <SSH-PORT> config.yaml <NVIDIA-HOST-NAME>:/etc/iotedge
+#sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; systemctl restart iotedge' < <(cat)
 
 # deploy iotedge
-az iot edge set-modules --device-id tediotedgedevice --hub-name tediothub --content ./deployment.json
+#az iot edge set-modules --device-id tediotedgedevice --hub-name tediothub --content ./deployment.json
