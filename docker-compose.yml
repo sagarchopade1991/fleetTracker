@@ -2,7 +2,7 @@ version: '3.9'
 services:
   backend:
     container_name: ted_backend
-    image: tegfleettrackeracr.azurecr.io/fleetapi:0.0.29
+    image: tegfleettrackeracr.azurecr.io/fleetapi:0.0.30
     ports:
       - '4000:4000'
     env_file:
