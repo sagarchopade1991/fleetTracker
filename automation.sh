@@ -28,36 +28,19 @@ az extension add --name azure-iot
 # container registry login 
 az acr login --name tegfleettrackeracr
 
-# create iot device
-# az iot hub device-identity create -n tediothub -d tediotdevice --ee false
-# az iot hub device-identity create -n tediothub -d tediotedgedevice --ee true
-
-# create .env and copy content from env.temp
-#true > .env && cp env.temp .env
-#true > config.yaml && cp config.template.yaml config.yaml
-#true > deployment.json && cp deployment.template.json deployment.json
-
-# install nodejs
-#curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-#apt-get install -y nodejs build-essential sshpass
-
-# install npm packages and run nodejs app to set environment variables
-#npm install && node set_env.js <RESOURCE-GROUP> tedblobstorage tediothub tediotdevice tedcosmosaccount tedLinuxVM tediotedgedevice <AZURE-CONTAINER-REGISTRY>
-# npm install && node set_env.js $resource_group $storage_acc $iot_hub $iot_device_name $cosmos_acc $vm_name
-
 #apt-get install mssql-tools
 #ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 #sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
 #sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
 
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
-sudo apt-get update 
-sudo apt-get install mssql-tools unixodbc-dev
-sudo apt-get update 
-sudo apt-get install mssql-tools
-sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
-sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
+#curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+#curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+#sudo apt-get update 
+#sudo apt-get install mssql-tools unixodbc-dev
+#sudo apt-get update 
+#sudo apt-get install mssql-tools
+#sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
+#sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
 
 #wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 #sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
