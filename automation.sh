@@ -45,15 +45,7 @@ az acr login --name tegfleettrackeracr
 #npm install && node set_env.js <RESOURCE-GROUP> tedblobstorage tediothub tediotdevice tedcosmosaccount tedLinuxVM tediotedgedevice <AZURE-CONTAINER-REGISTRY>
 # npm install && node set_env.js $resource_group $storage_acc $iot_hub $iot_device_name $cosmos_acc $vm_name
 
+sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
+
 docker-compose up -d
 
-# Host name of the Nvidia Device : <NVIDIA-HOST-NAME> (Format : root@<public-ip-address>)
-# Port on which SSH in enabled on Nvidia device : <SSH-PORT> (Default port : 22)
-# Nvidia device root user password : <NVIDIA-PASSWORD> 
-#sshpass -p <NVIDIA-PASSWORD> ssh -o 'StrictHostKeyChecking no' <NVIDIA-HOST-NAME> -p <SSH-PORT> 'exit'
-#sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; rm /etc/iotedge/config.yaml' < <(cat)
-#sshpass -p <NVIDIA-PASSWORD> scp -P <SSH-PORT> config.yaml <NVIDIA-HOST-NAME>:/etc/iotedge
-#sshpass -p <NVIDIA-PASSWORD> ssh -tt <NVIDIA-HOST-NAME> -p <SSH-PORT> 'stty raw -echo; systemctl restart iotedge' < <(cat)
-
-# deploy iotedge
-#az iot edge set-modules --device-id tediotedgedevice --hub-name tediothub --content ./deployment.json
