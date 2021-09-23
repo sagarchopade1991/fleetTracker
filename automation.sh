@@ -48,6 +48,7 @@ az acr login --name tegfleettrackeracr
 apt-get install mssql-tools
 ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
+sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
 
 docker-compose up -d
 
