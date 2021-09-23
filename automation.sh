@@ -45,6 +45,8 @@ az acr login --name tegfleettrackeracr
 #npm install && node set_env.js <RESOURCE-GROUP> tedblobstorage tediothub tediotdevice tedcosmosaccount tedLinuxVM tediotedgedevice <AZURE-CONTAINER-REGISTRY>
 # npm install && node set_env.js $resource_group $storage_acc $iot_hub $iot_device_name $cosmos_acc $vm_name
 
+apt-get install mssql-tools
+ln -sfn /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
 
 docker-compose up -d
