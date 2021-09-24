@@ -2,7 +2,7 @@ version: '3.9'
 services:
   simulator:
     container_name: ted_simulator
-    image: tegfleettrackeracr.azurecr.io/fleetapi:0.0.30
+    image: tegfleettrackeracr.azurecr.io/simulator:0.0.4
     ports:
       - '5000:5000'
     env_file:
