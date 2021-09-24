@@ -33,14 +33,14 @@ az acr login --name tegfleettrackeracr
 #sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
 #sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
 
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
-sudo apt-get update 
-sudo apt-get install mssql-tools unixodbc-dev
-sudo apt-get update 
-sudo apt-get install mssql-tools
-sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
-sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
+#curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+#curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+#sudo apt-get update 
+#sudo apt-get install mssql-tools unixodbc-dev
+#sudo apt-get update 
+#sudo apt-get install mssql-tools
+#sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i schemaScript.sql -e
+#sqlcmd -S testteg-fleet-tracker.database.windows.net –U testtegquest -P Quest@12345678 -i dataScript.sql -e
 
 #wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 #sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
