@@ -9,7 +9,7 @@ services:
       - .env
   frontend:
     container_name: ted_frontend
-    image: tegfleettrackeracr.azurecr.io/frontend:0.0.16
+    image: tegfleettrackeracr.azurecr.io/frontend:0.0.17
     env_file:
       - .env
     ports:
