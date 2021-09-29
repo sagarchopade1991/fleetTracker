@@ -1971,6 +1971,11 @@ BEGIN
 	declare @NoDeviceId int = (SELECT TOP 1 id FROM dbo.Device WHERE deviceSerialNumber='NoDevice' AND tenantId = @tenantId AND isActive =1 and isDeleted = 0)
 	IF EXISTS(SELECT deviceId FROM dbo.Vehicles where id = @vehicleId AND deviceId != @NoDeviceId AND tenantId = @tenantId )
 	BEGIN
+		--// added bellow 2 lins to delete trips & vehicle Data on device unassociation. because alway will get new trips on each time simulator starts 
+		delete from Trip where vehicleId = @vehicleId;
+		delete from VehicleData where vehicleId = @vehicleId;
+		delete from Alerts where vehicleId = @vehicleId;
+		--/////////
 		UPDATE Vehicles SET deviceId = @NoDeviceId, deviceSerialNumber = 'NoDevice' WHERE id = @vehicleId;
 	END
 	ELSE
